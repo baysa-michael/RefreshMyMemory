@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Text Resources -->
+    <dimen name="screen_title">36sp</dimen>
+    <dimen name="button_text">24sp</dimen>
+    <dimen name="label_text">20sp</dimen>
+    <dimen name="medium_label_text">16sp</dimen>
+    <dimen name="small_label_text">12sp</dimen>
+    <dimen name="description_text">10sp</dimen>
+
+    <!-- Margin & Spacing Resources -->
+    <dimen name="extra_large_margin">84dp</dimen>
+    <dimen name="large_margin">48dp</dimen>
+    <dimen name="general_margin">24dp</dimen>
+    <dimen name="small_margin">12dp</dimen>
+    <dimen name="extra_small_margin">5dp</dimen>
+    <dimen name="row_height">60dp</dimen>
+    <dimen name="full_day_height">1440dp</dimen>
+    <dimen name="day_width">250dp</dimen>
+
+</resources>

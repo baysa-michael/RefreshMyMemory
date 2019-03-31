@@ -27,5 +27,4 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
     public void showCancel() {
 
     }
-
 }

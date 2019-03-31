@@ -39,10 +39,11 @@
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
     <string name="take_quiz_button">Take Quiz</string>
-    <string name="manage_account_button">Manage Account</string>
+    <string name="add_course_button">Add Course</string>
     <string name="messages_button">Messages</string>
-    <string name="logout_button">Logout</string>
     <string name="get_student_report_button">Get Student Report</string>
+    <string name="manage_account_button">Manage Account</string>
+    <string name="logout_button">Logout</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->

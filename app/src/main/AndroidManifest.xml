@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".view_presenter.landing.Landing"></activity>
+        <activity android:name=".view_presenter.select_quiz.SelectQuiz"></activity>
+        <activity android:name=".view_presenter.landing.Landing" />
         <activity android:name=".view_presenter.login.Login" />
         <activity android:name=".view_presenter.create_account.CreateAccount" />
         <activity android:name=".view_presenter.welcome.Welcome">

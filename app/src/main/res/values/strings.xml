@@ -10,6 +10,7 @@
     <string name="welcome_title">WELCOME TO \n&appname;</string>
     <string name="create_account_title">CREATE NEW ACCOUNT</string>
     <string name="login_title">LOG IN</string>
+    <string name="landing_title">WELCOME</string>
 
 
     <!-- LABEL STRINGS -->
@@ -37,6 +38,10 @@
     <string name="login_button">Login</string>
     <string name="confirm_button">Confirm</string>
     <string name="cancel_button">Cancel</string>
+    <string name="take_quiz_button">Take Quiz</string>
+    <string name="manage_account_button">Manage Account</string>
+    <string name="messages_button">Messages</string>
+    <string name="logout_button">Logout</string>
 
 
     <!-- SHARED PREFERENCE STRINGS -->

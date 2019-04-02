@@ -12,6 +12,7 @@
     <string name="login_title">LOG IN</string>
     <string name="landing_title">WELCOME</string>
     <string name="select_quiz_title">SELECT QUIZ</string>
+    <string name="quiz_title">QUIZ:</string>
 
 
     <!-- LABEL STRINGS -->
@@ -45,6 +46,9 @@
     <string name="get_student_report_button">Get Student Report</string>
     <string name="manage_account_button">Manage Account</string>
     <string name="logout_button">Logout</string>
+    <string name="previous_button">Next</string>
+    <string name="next_button">Previous</string>
+    <string name="submit_button">Submit</string>
 
     <string name="acct201_test_button">ACCT 201</string>
 

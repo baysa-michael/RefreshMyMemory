@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".view_presenter.quiz.Quiz"
+    >
+    <TextView
+        android:id="@+id/quizTitle"
+        android:text="@string/quiz_title"
+        android:textSize="@dimen/screen_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/large_margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <Button
+        android:id="@+id/quizPreviousQuestionButton"
+        android:text="@string/previous_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintTop_toBottomOf="@+id/quizTitle"
+        app:layout_constraintBottom_toTopOf="@+id/quizQuestionPager"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/quizNextQuestionButton"
+        />
+
+    <Button
+        android:id="@+id/quizNextQuestionButton"
+        android:text="@string/next_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintTop_toBottomOf="@+id/quizTitle"
+        app:layout_constraintBottom_toTopOf="@+id/quizQuestionPager"
+        app:layout_constraintStart_toEndOf="@+id/quizPreviousQuestionButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBaseline_toBaselineOf="@+id/quizPreviousQuestionButton"
+        />
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/quizQuestionPager"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/general_border"
+        android:layout_marginTop="@dimen/small_margin"
+        android:layout_marginBottom="@dimen/small_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        app:layout_constraintTop_toBottomOf="@+id/quizPreviousQuestionButton"
+        app:layout_constraintBottom_toTopOf="@+id/quizSubmitButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        >
+
+    </android.support.v4.view.ViewPager>
+
+    <Button
+        android:id="@+id/quizSubmitButton"
+        android:text="@string/submit_button"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/general_margin"
+        android:layout_marginStart="@dimen/general_margin"
+        android:layout_marginEnd="@dimen/general_margin"
+        android:textSize="@dimen/button_text"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+</android.support.constraint.ConstraintLayout>

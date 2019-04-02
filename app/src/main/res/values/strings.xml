@@ -21,6 +21,10 @@
     <string name="display_name_label">DISPLAY NAME:</string>
     <string name="email_label">E-MAIL:</string>
     <string name="phone_label">PHONE:</string>
+    <string name="question_number_label">QUESTION #:</string>
+    <string name="blank_question_label">Place Question Here</string>
+    <string name="blank_answer_label">Place Answer Here</string>
+    <string name="blank_image">No Image</string>
 
 
     <!-- MESSAGES STRINGS -->
@@ -48,13 +52,13 @@
     <string name="logout_button">Logout</string>
     <string name="previous_button">Next</string>
     <string name="next_button">Previous</string>
-    <string name="submit_button">Submit</string>
+    <string name="submit_quiz_button">Submit Quiz</string>
+    <string name="answer_a_button">A</string>
+    <string name="answer_b_button">B</string>
+    <string name="answer_c_button">C</string>
+    <string name="answer_d_button">D</string>
 
     <string name="acct201_test_button">ACCT 201</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-
 
     <!-- SHARED PREFERENCE STRINGS -->
 

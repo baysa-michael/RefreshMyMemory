@@ -3,15 +3,15 @@ package com.refreshmymemory.view_presenter.landing;
 public interface LandingContract {
     interface View {
         void showTakeQuiz();
-        void showManageAccount();
+        void showAddCourse();
         void showMessages();
+        void showGetStudentReport();
+        void showManageAccount();
         void showLogout();
+        void informUser(String message);
     }
 
     interface Presenter {
-        void handleTakeQuiz();
-        void handleManageAccount();
-        void handleMessages();
-        void handleLogout();
+
     }
 }

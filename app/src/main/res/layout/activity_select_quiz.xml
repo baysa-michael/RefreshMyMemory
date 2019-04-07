@@ -19,8 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         />
 
-    <ScrollView
-        android:id="@+id/selectquizScrollView"
+    <view class="android.support.v7.app.AlertController$RecycleListView"
+        android:id="@+id/selectquizRecyclerView"
         android:background="@drawable/general_border"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -29,19 +29,7 @@
         app:layout_constraintBottom_toTopOf="@+id/selectquizCancelButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        >
-        <Button
-            android:id="@+id/selectquizTestCourse"
-            android:text="@string/acct201_test_button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/general_margin"
-            android:textSize="@dimen/button_text"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            />
-    </ScrollView>
+        />
 
     <Button
         android:id="@+id/selectquizCancelButton"

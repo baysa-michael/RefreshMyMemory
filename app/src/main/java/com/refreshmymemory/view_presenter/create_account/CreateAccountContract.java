@@ -4,10 +4,12 @@ public interface CreateAccountContract {
     interface View {
         void showConfirm();
         void showCancel();
+        void informUser(String message);
     }
 
     interface Presenter {
-        void handleClickConfirm();
-        void handleClickCancel();
+        boolean validatePasswordRequirements(String password);
+        boolean submitCreateAccountRequest(String username, String password, String email,
+                                           String displayName);
     }
 }

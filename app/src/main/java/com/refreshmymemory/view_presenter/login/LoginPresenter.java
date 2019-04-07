@@ -1,21 +1,42 @@
 package com.refreshmymemory.view_presenter.login;
 
-public class LoginPresenter implements LoginContract.Presenter {
+import com.refreshmymemory.utilities.Hashing;
+
+class LoginPresenter implements LoginContract.Presenter {
     private static final String TAG = "LoginPresenter";
 
-    public boolean handleClickLogin(String username, String password) {
-        // Confirm Username and Password are not empty strings
-        if (username == null || username.isEmpty() ||
-        password == null || password.isEmpty()) {
-            // Send false back to the view
+    @Override
+    public int obtainSalt(String username) {
+        // IMPLEMENT SERVER SIDE REQUEST FOR SALT *****************
+        return 6521;
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        // Obtain Salt by Username *******************  Need to implement server request
+        int userSalt = obtainSalt(username);
+
+        // Hash Password
+        String userData = Integer.toString(userSalt) +
+                username +
+                Integer.toString(userSalt) +
+                password +
+                Integer.toString(userSalt);
+        try {
+            String hashedPassword = Hashing.calculateHash(userData);
+        } catch (Exception e) {
+            // Return failure
+            e.printStackTrace();
             return false;
         }
 
-        // ADD LOGIC FOR LOGIN HERE ***************
+        // Send request to server  ***************************
+
+
+        // Return success or failure  ***************************
         return true;
     }
 
-    public void handleClickCancel() {
 
-    }
+
 }

@@ -4,10 +4,11 @@ public interface LoginContract {
     interface View {
         void showLogin();
         void showCancel();
+        void informUser(String message);
     }
 
     interface Presenter {
-        boolean handleClickLogin(String username, String password);
-        void handleClickCancel();
+        int obtainSalt(String username);
+        boolean login(String username, String password);
     }
 }

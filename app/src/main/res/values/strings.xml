@@ -58,7 +58,7 @@
     <string name="answer_c_button">C</string>
     <string name="answer_d_button">D</string>
 
-    <string name="acct201_test_button">ACCT 201</string>
+    <string name="test_button">TEST201 (Test Course)</string>
 
     <!-- SHARED PREFERENCE STRINGS -->
 

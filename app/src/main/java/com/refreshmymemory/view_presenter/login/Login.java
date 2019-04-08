@@ -44,7 +44,7 @@ public class Login extends AppCompatActivity implements LoginContract.View {
         presenter = new LoginPresenter();
 
         // Set Indeterminate Progress Bar to Gone
-        indeterminateProgressBar = findViewById(R.id.createaccountIndeterminateProgress);
+        indeterminateProgressBar = findViewById(R.id.loginIndeterminateProgress);
         indeterminateProgressBar.setVisibility(View.GONE);
     }
 

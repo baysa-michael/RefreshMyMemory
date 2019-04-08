@@ -17,9 +17,6 @@ import java.util.Set;
 public class Landing extends AppCompatActivity implements LandingContract.View {
     private final static String TAG = "Landing";
     private LandingPresenter presenter;
-    private RecyclerView.Adapter myAdapter;
-    private ProgressBar indeterminateProgressBar;
-    private Set<String> courses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

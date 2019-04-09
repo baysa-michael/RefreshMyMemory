@@ -22,6 +22,7 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
     private SelectQuizPresenter presenter;
     private RecyclerView.Adapter myAdapter;
     private Set<String> courses;
+    private ProgressBar indeterminateProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,11 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
             }
         });
         myRecycler.setAdapter(myAdapter);
+
+        // Set Indeterminate Progress Bar to Gone
+        indeterminateProgressBar = findViewById(R.id.selectquizIndeterminateProgress);
+        indeterminateProgressBar.setVisibility(View.GONE);
+
     }
 
     @Override
@@ -73,7 +79,14 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
 
     @Override
     public void startQuiz(String targetCourse) {
+        // Start Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.VISIBLE);
+
+
         informUser("Starting Quiz for " + targetCourse);
+
+        // Stop Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.GONE);
     }
 
     @Override

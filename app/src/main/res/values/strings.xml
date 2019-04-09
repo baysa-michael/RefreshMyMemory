@@ -24,7 +24,9 @@
     <string name="question_number_label">QUESTION #:</string>
     <string name="blank_question_label">Place Question Here</string>
     <string name="blank_answer_label">Place Answer Here</string>
-    <string name="blank_image">No Image</string>
+    <string name="blank_image_label">No Image</string>
+    <string name="selected_answer_label">SELECTED ANSWER:</string>
+    <string name="selected_answer_default">None</string>
 
 
     <!-- MESSAGES STRINGS -->
@@ -57,6 +59,7 @@
     <string name="answer_b_button">B</string>
     <string name="answer_c_button">C</string>
     <string name="answer_d_button">D</string>
+
 
     <string name="test_button">TEST201 (Test Course)</string>
 

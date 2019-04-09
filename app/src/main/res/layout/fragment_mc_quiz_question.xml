@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".QuizQuestionFragment"
+    tools:context=".view_presenter.quiz.MCQuizQuestionFragment"
     app:layout_constraintTop_toTopOf="parent"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintStart_toStartOf="parent"
@@ -42,7 +42,7 @@
 
         <ImageView
             android:id="@+id/quizfragmentQuestionImage"
-            android:contentDescription="@string/blank_image"
+            android:contentDescription="@string/blank_image_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/general_margin"
@@ -153,6 +153,32 @@
             app:layout_constraintStart_toEndOf="@id/quizfragmentAnswer4Button"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBaseline_toBaselineOf="@+id/quizfragmentAnswer4Button"
+            />
+
+        <TextView
+            android:id="@+id/quizfragmentSelectedAnswerLabel"
+            android:text="@string/selected_answer_label"
+            android:textSize="@dimen/button_text"
+            android:textAlignment="textStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/general_margin"
+            app:layout_constraintTop_toBottomOf="@+id/quizfragmentAnswer4Button"
+            app:layout_constraintStart_toStartOf="parent"
+            />
+
+        <TextView
+            android:id="@+id/quizfragmentSelectedAnswerDisplay"
+            android:text="@string/selected_answer_default"
+            android:textSize="@dimen/button_text"
+            android:textAlignment="textStart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/general_margin"
+            app:layout_constraintTop_toBottomOf="@+id/quizfragmentAnswer4Button"
+            app:layout_constraintStart_toEndOf="@+id/quizfragmentSelectedAnswerLabel"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@+id/quizfragmentSelectedAnswerLabel"
             />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

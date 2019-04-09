@@ -2,16 +2,17 @@ package com.refreshmymemory.model;
 
 import java.util.List;
 
-public class MultipleChoiceQuestion {
+public class MultipleChoiceQuestion implements QuestionInterface {
     private String question;
     private List<String> answerList;
-    private int correctAnswerIndex;
+    private int correctAnswer;
     private int userAnswer;
 
-    public MultipleChoiceQuestion(String question, List<String> answerList, int correctAnswerIndex) {
+    public MultipleChoiceQuestion(String question, List<String> answerList,
+                                  int correctAnswer) {
         this.question = question;
         this.answerList = answerList;
-        this.correctAnswerIndex = correctAnswerIndex;
+        this.correctAnswer = correctAnswer;
         this.userAnswer = -1;
     }
 
@@ -31,12 +32,12 @@ public class MultipleChoiceQuestion {
         this.answerList = answerList;
     }
 
-    public int getCorrectAnswerIndex() {
-        return correctAnswerIndex;
+    public int getCorrectAnswer() {
+        return correctAnswer;
     }
 
-    public void setCorrectAnswerIndex(int correctAnswerIndex) {
-        this.correctAnswerIndex = correctAnswerIndex;
+    public void setCorrectAnswer(int correctAnswer) {
+        this.correctAnswer = correctAnswer;
     }
 
     public int getUserAnswer() {
@@ -45,5 +46,10 @@ public class MultipleChoiceQuestion {
 
     public void setUserAnswer(int userAnswer) {
         this.userAnswer = userAnswer;
+    }
+
+    @Override
+    public int gradeQuestion() {
+        return (userAnswer == correctAnswer ? 1 : 0);
     }
 }

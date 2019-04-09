@@ -1,13 +1,15 @@
 package com.refreshmymemory.view_presenter.quiz;
 
+import com.refreshmymemory.model.QuestionInterface;
+
+import java.util.Set;
+
 public interface QuizContract {
     interface View {
-        void showTestQuiz();
         void showCancel();
     }
 
     interface Presenter {
-        void handleTestQuiz();
-        void handleClickCancel();
+        Set<QuestionInterface> constructQuiz(String course);
     }
 }

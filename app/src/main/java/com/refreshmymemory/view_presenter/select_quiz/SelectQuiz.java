@@ -1,5 +1,6 @@
 package com.refreshmymemory.view_presenter.select_quiz;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.DividerItemDecoration;
@@ -13,6 +14,7 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.refreshmymemory.R;
+import com.refreshmymemory.view_presenter.quiz.Quiz;
 
 import java.util.Set;
 import java.util.TreeSet;
@@ -22,7 +24,6 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
     private SelectQuizPresenter presenter;
     private RecyclerView.Adapter myAdapter;
     private Set<String> courses;
-    private ProgressBar indeterminateProgressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,11 +60,6 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
             }
         });
         myRecycler.setAdapter(myAdapter);
-
-        // Set Indeterminate Progress Bar to Gone
-        indeterminateProgressBar = findViewById(R.id.selectquizIndeterminateProgress);
-        indeterminateProgressBar.setVisibility(View.GONE);
-
     }
 
     @Override
@@ -79,14 +75,11 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
 
     @Override
     public void startQuiz(String targetCourse) {
-        // Start Indeterminate Progress Bar
-        indeterminateProgressBar.setVisibility(View.VISIBLE);
+        Intent newIntent = new Intent(this, Quiz.class);
 
+        newIntent.putExtra("course", targetCourse);
 
-        informUser("Starting Quiz for " + targetCourse);
-
-        // Stop Indeterminate Progress Bar
-        indeterminateProgressBar.setVisibility(View.GONE);
+        startActivity(newIntent);
     }
 
     @Override

@@ -11,6 +11,5 @@ public interface SelectQuizContract {
 
     interface Presenter {
         Set<String> getUserCourseList();
-
     }
 }

@@ -19,5 +19,4 @@ public class SelectQuizPresenter implements SelectQuizContract.Presenter {
 
         return returnCourseList;
     }
-
 }

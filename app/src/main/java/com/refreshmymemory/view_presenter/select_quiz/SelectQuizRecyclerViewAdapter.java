@@ -3,11 +3,11 @@ package com.refreshmymemory.view_presenter.select_quiz;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,6 +17,7 @@ import com.refreshmymemory.R;
 
 public class SelectQuizRecyclerViewAdapter extends
         RecyclerView.Adapter<SelectQuizRecyclerViewAdapter.MyViewHolder> {
+    private static final String TAG = "SelectQuizRVA";
     private List<String> courses;
     private Context context;
     private OnItemClickListener listener;
@@ -28,23 +29,18 @@ public class SelectQuizRecyclerViewAdapter extends
 
     // Provide a reference to the views for each data item
     static class MyViewHolder extends RecyclerView.ViewHolder {
-        private TextView courseName;
-        private View view;
+        private Button courseName;
 
         private MyViewHolder(View newView) {
             super(newView);
 
             // Link Text View
             courseName = newView.findViewById(R.id.selectquizcourserowCourseName);
-            this.view = newView;
         }
 
         public void bind(final String targetCourse, final OnItemClickListener listener) {
-            // Set Name Text
-            // courseName.setText(targetCourse);
-
             // Set Listener
-            view.setOnClickListener(new View.OnClickListener() {
+            courseName.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     listener.onItemClick(targetCourse);
@@ -52,6 +48,15 @@ public class SelectQuizRecyclerViewAdapter extends
             });
 
         }
+    }
+
+    SelectQuizRecyclerViewAdapter(Context newContext, Set<String> courseList,
+                                  OnItemClickListener newListener) {
+        this.courses = new ArrayList<>(courseList);
+        this.context = newContext;
+        this.listener = newListener;
+
+
     }
 
     @Override
@@ -64,13 +69,6 @@ public class SelectQuizRecyclerViewAdapter extends
                 false);
 
         return new MyViewHolder(newView);
-    }
-
-    SelectQuizRecyclerViewAdapter(Context newContext, Set<String> courseList,
-                                  OnItemClickListener newListener) {
-        this.courses = new ArrayList<>(courseList);
-        this.context = newContext;
-        this.listener = newListener;
     }
 
     @Override

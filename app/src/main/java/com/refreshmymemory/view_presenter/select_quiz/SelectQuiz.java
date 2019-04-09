@@ -67,10 +67,6 @@ public class SelectQuiz extends AppCompatActivity implements SelectQuizContract.
         // Load User Course List
         courses = presenter.getUserCourseList();
 
-        for (String thisCourse : courses) {
-            Log.i(TAG, "Added:  " + thisCourse);
-        }
-
         // Notify the adapter
         myAdapter.notifyDataSetChanged();
     }

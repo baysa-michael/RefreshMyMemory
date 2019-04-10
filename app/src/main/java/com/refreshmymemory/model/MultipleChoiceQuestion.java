@@ -3,6 +3,7 @@ package com.refreshmymemory.model;
 import java.util.List;
 
 public class MultipleChoiceQuestion implements QuestionInterface {
+    private int questionIndex;
     private String question;
     private List<String> answerList;
     private int correctAnswer;
@@ -10,10 +11,19 @@ public class MultipleChoiceQuestion implements QuestionInterface {
 
     public MultipleChoiceQuestion(String question, List<String> answerList,
                                   int correctAnswer) {
+        this.questionIndex = 0;
         this.question = question;
         this.answerList = answerList;
         this.correctAnswer = correctAnswer;
         this.userAnswer = -1;
+    }
+
+    public int getQuestionIndex() {
+        return questionIndex;
+    }
+
+    public void setQuestionIndex(int questionIndex) {
+        this.questionIndex = questionIndex;
     }
 
     public String getQuestion() {

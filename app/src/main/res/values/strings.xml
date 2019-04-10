@@ -52,8 +52,8 @@
     <string name="get_student_report_button">Get Student Report</string>
     <string name="manage_account_button">Manage Account</string>
     <string name="logout_button">Logout</string>
-    <string name="previous_button">Next</string>
-    <string name="next_button">Previous</string>
+    <string name="previous_button">Previous</string>
+    <string name="next_button">Next</string>
     <string name="submit_quiz_button">Submit Quiz</string>
     <string name="answer_a_button">A</string>
     <string name="answer_b_button">B</string>

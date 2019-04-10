@@ -27,7 +27,7 @@
         android:layout_marginStart="@dimen/general_margin"
         android:textSize="@dimen/button_text"
         app:layout_constraintTop_toBottomOf="@+id/quizTitle"
-        app:layout_constraintBottom_toTopOf="@+id/quizQuestionPager"
+        app:layout_constraintBottom_toTopOf="@+id/quizQuestionLayout"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/quizNextQuestionButton"
         />
@@ -40,15 +40,15 @@
         android:layout_marginEnd="@dimen/general_margin"
         android:textSize="@dimen/button_text"
         app:layout_constraintTop_toBottomOf="@+id/quizTitle"
-        app:layout_constraintBottom_toTopOf="@+id/quizQuestionPager"
+        app:layout_constraintBottom_toTopOf="@+id/quizQuestionLayout"
         app:layout_constraintStart_toEndOf="@+id/quizPreviousQuestionButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBaseline_toBaselineOf="@+id/quizPreviousQuestionButton"
         />
 
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/quizQuestionPager"
+    <LinearLayout
+        android:id="@+id/quizQuestionLayout"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="@drawable/general_border"
@@ -60,9 +60,9 @@
         app:layout_constraintBottom_toTopOf="@+id/quizSubmitButton"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        android:orientation="horizontal"
         >
-
-    </android.support.v4.view.ViewPager>
+    </LinearLayout>
 
     <Button
         android:id="@+id/quizSubmitButton"

@@ -1,4 +1,4 @@
-package com.refreshmymemory.utilities;
+package com.refreshmymemory.control;
 
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;

@@ -10,6 +10,9 @@ import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.refreshmymemory.R;
+import com.refreshmymemory.control.ServletConnection;
+
+import java.util.Map;
 
 public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
     private final static String TAG = "CreateAccount";
@@ -82,8 +85,31 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
             return;
         }
 
-        // Send request to create new user and return result
-        if (presenter.submitCreateAccountRequest(username, password, email, displayName)) {
+        // Prepare Create Account Request
+        Map<String, String> requestData =
+                presenter.prepareCreateAccountRequest(username, password, email, displayName);
+
+        // Run the AsyncTask request to server if there is valid data
+        if (requestData != null) {
+            // Launch Connection
+            try {
+                // Set URL
+                String url = "localhost";  //************* UPDATE URL *************************
+
+                ServletConnection newConnection = new ServletConnection(requestData);
+
+                newConnection.execute(url);
+            } catch (Exception e) {
+                // Stop Indeterminate Progress Bar
+                indeterminateProgressBar.setVisibility(View.GONE);
+
+                informUser("ERROR:  Unable to connect to server");
+
+                e.printStackTrace();
+            }
+
+
+
             // Stop Indeterminate Progress Bar
             indeterminateProgressBar.setVisibility(View.GONE);
 

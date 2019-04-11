@@ -1,6 +1,6 @@
 package com.refreshmymemory.view_presenter.login;
 
-import com.refreshmymemory.utilities.Hashing;
+import com.refreshmymemory.control.Hashing;
 
 class LoginPresenter implements LoginContract.Presenter {
     private static final String TAG = "LoginPresenter";

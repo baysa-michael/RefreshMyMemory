@@ -1,39 +1,50 @@
 package com.refreshmymemory.view_presenter.create_account;
 
-import com.refreshmymemory.utilities.Hashing;
+import com.refreshmymemory.control.Hashing;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 class CreateAccountPresenter implements CreateAccountContract.Presenter {
+    @Override
     public boolean validatePasswordRequirements(String password) {
         // A minimum of 14 characters with at least one capital and one digit
         return password.matches("^(?=.*[A-Z])(?=.*\\d)(\\S){14,}$");
     }
 
-    public boolean submitCreateAccountRequest(String username, String password, String email,
-                                       String displayName) {
+    @Override
+    public Map<String, String> prepareCreateAccountRequest(String username, String password, String email,
+                                               String displayName) {
         // Create User Salt
         Random r = new Random();
-        int userSalt = r.nextInt();
+        int salt = r.nextInt();
 
         // Hash Password
-        String userData = Integer.toString(userSalt) +
+        String userData = Integer.toString(salt) +
                 username +
-                Integer.toString(userSalt) +
+                Integer.toString(salt) +
                 password +
-                Integer.toString(userSalt);
+                Integer.toString(salt);
+        String hashedPassword;
         try {
-            String hashedPassword = Hashing.calculateHash(userData);
+            hashedPassword = Hashing.calculateHash(userData);
         } catch (Exception e) {
             // Return failure
             e.printStackTrace();
-            return false;
+            return null;
         }
 
-        // Send request to server  ***************************
+        // Create Hashmap of User Data
+        Map<String, String> requestData = new HashMap<>();
+        requestData.put("requestType", "createAccount");
+        requestData.put("username", username);
+        requestData.put("hashedPassword", hashedPassword);
+        requestData.put("email", email);
+        requestData.put("displayName", displayName);
+        requestData.put("salt", Integer.toString(salt));
 
-
-        // Return success or failure  ***************************
-        return true;
+        // Return Hahmap for call to AsyncTask
+        return requestData;
     }
 }

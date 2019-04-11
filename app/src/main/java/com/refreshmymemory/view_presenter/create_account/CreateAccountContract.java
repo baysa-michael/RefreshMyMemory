@@ -1,5 +1,7 @@
 package com.refreshmymemory.view_presenter.create_account;
 
+import java.util.Map;
+
 public interface CreateAccountContract {
     interface View {
         void showConfirm();
@@ -9,7 +11,7 @@ public interface CreateAccountContract {
 
     interface Presenter {
         boolean validatePasswordRequirements(String password);
-        boolean submitCreateAccountRequest(String username, String password, String email,
-                                           String displayName);
+        Map<String, String> prepareCreateAccountRequest(String username, String password,
+                                                        String email, String displayName);
     }
 }

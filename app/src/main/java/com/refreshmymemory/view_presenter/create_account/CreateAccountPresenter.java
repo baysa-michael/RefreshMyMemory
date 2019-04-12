@@ -14,21 +14,17 @@ class CreateAccountPresenter implements CreateAccountContract.Presenter {
     }
 
     @Override
-    public Map<String, String> prepareCreateAccountRequest(String username, String password, String email,
-                                               String displayName) {
+    public Map<String, String> prepareCreateAccountRequest(String username, String password,
+                                                           String email, String displayName) {
         // Create User Salt
         Random r = new Random();
         int salt = r.nextInt();
 
         // Hash Password
-        String userData = Integer.toString(salt) +
-                username +
-                Integer.toString(salt) +
-                password +
-                Integer.toString(salt);
+        String saltedPassword = Hashing.getSaltedPassword(username, password, salt);
         String hashedPassword;
         try {
-            hashedPassword = Hashing.calculateHash(userData);
+            hashedPassword = Hashing.calculateHash(saltedPassword);
         } catch (Exception e) {
             // Return failure
             e.printStackTrace();
@@ -42,7 +38,7 @@ class CreateAccountPresenter implements CreateAccountContract.Presenter {
         requestData.put("hashedPassword", hashedPassword);
         requestData.put("email", email);
         requestData.put("displayName", displayName);
-        requestData.put("salt", Integer.toString(salt));
+        requestData.put("userSalt", Integer.toString(salt));
 
         // Return Hahmap for call to AsyncTask
         return requestData;

@@ -6,6 +6,9 @@
     <string name="app_name">&appname;</string>
 
 
+    <!-- URL STRINGS -->
+    <string name="servlet_url">localhost:8080/javaservlets/RefreshMyMemoryServlet</string>
+
     <!-- TITLE SCREEN STRINGS -->
     <string name="welcome_title">WELCOME TO \n&appname;</string>
     <string name="create_account_title">CREATE NEW ACCOUNT</string>

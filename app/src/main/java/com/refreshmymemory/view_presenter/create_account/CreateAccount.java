@@ -93,12 +93,9 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         if (requestData != null) {
             // Launch Connection
             try {
-                // Set URL
-                String url = "localhost";  //************* UPDATE URL *************************
-
                 ServletConnection newConnection = new ServletConnection(requestData);
 
-                newConnection.execute(url);
+                newConnection.execute(getString(R.string.servlet_url));
             } catch (Exception e) {
                 // Stop Indeterminate Progress Bar
                 indeterminateProgressBar.setVisibility(View.GONE);
@@ -106,9 +103,8 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
                 informUser("ERROR:  Unable to connect to server");
 
                 e.printStackTrace();
+                return;
             }
-
-
 
             // Stop Indeterminate Progress Bar
             indeterminateProgressBar.setVisibility(View.GONE);

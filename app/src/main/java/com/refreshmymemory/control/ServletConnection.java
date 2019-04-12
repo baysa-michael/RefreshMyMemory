@@ -93,13 +93,13 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
 
             // Build Input
             StringBuilder result = new StringBuilder();
-            String document;
-            while ((document = reader.readLine()) != null) {
-                result.append(document);
+            String returnJSON;
+            while ((returnJSON = reader.readLine()) != null) {
+                result.append(returnJSON);
             }
 
             // **************** ADD ACTIONS FOR RETURN DOCUMENT ***********************
-            Log.i(TAG, document);
+            Log.i(TAG, returnJSON);
 
         } catch (Exception e) {
             e.printStackTrace();

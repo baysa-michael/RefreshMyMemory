@@ -20,4 +20,13 @@ public class Hashing {
         }
 
         return hexString.toString();
-    }}
+    }
+
+    public static String getSaltedPassword(String username, String password, int salt) {
+        return Integer.toString(salt) +
+                username +
+                Integer.toString(salt) +
+                password +
+                Integer.toString(salt);
+    }
+}

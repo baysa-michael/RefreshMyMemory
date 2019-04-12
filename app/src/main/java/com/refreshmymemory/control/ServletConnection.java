@@ -11,13 +11,12 @@ import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.Map;
 
-import javax.net.ssl.HttpsURLConnection;
-
-public class ServletConnection extends AsyncTask<String, Integer, Void> {
+public class ServletConnection extends AsyncTask<String, Integer, Boolean> {
     private static final String TAG = "ServletConnection";
     private String urlString;
     private String requestParameters;
@@ -59,21 +58,22 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
     }
 
     @Override
-    protected Void doInBackground(String... parameters) {
+    protected Boolean doInBackground(String... parameters) {
         // Set URL from Passed Parameter
         urlString = parameters[0];
-        HttpsURLConnection urlConnection = null;
+        HttpURLConnection urlConnection = null;
+        boolean isSuccessful = false;
 
         try {
             // Create a new URL Object
             URL url = new URL(urlString);
 
             // Create a new secure connection
-            urlConnection = (HttpsURLConnection) url.openConnection();
+            urlConnection = (HttpURLConnection) url.openConnection();
 
             // Prepare URL Connection Parameters
             urlConnection.setDoOutput(true);
-            urlConnection.setRequestMethod("POST");
+            urlConnection.setRequestMethod("GET");
             urlConnection.setRequestProperty("Accept-Charset", "UTF-8");
 
             // Set Read and Connection Timeout (in milliseconds)
@@ -95,30 +95,23 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
 
 
             // Retrieve Results from Server via InputStream
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            BufferedReader reader = new BufferedReader(new InputStreamReader(in));
+            BufferedReader reader =
+                    new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
 
             // Build Input
-            StringBuilder result = new StringBuilder();
-            String returnJSON;
-            while ((returnJSON = reader.readLine()) != null) {
-                result.append(returnJSON);
+            String returnString = "";
+            String returnJSON = "";
+            while ((returnString = reader.readLine()) != null) {
+                returnJSON += returnString;
             }
-            Log.i(TAG, returnJSON);
-
 
             // Retrieve Status from JSON Result
             JsonObject json = new Gson().fromJson(returnJSON, JsonObject.class);
             String status = json.get("status").toString();
-
             if (status.equalsIgnoreCase("SUCCESS")) {
-                listener.onServerResponse(true, "Successfully Added New User");
-            } else {
-                listener.onServerResponse(false, "ERROR:  Unable to Add New User");
+                isSuccessful = true;
             }
-
         } catch (Exception e) {
-            listener.onServerResponse(false, "ERROR:  Unable to Add New User");
             e.printStackTrace();
         } finally {
             if (urlConnection != null) {
@@ -126,6 +119,18 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
             }
         }
 
-        return null ;
+        return isSuccessful;
+    }
+
+    @Override
+    protected void onPostExecute(Boolean isSuccessful) {
+        super.onPostExecute(isSuccessful);
+
+        if (isSuccessful) {
+            listener.onServerResponse(true, "Successfully Added New User");
+        } else {
+            listener.onServerResponse(false, "ERROR:  Unable to Add New User");
+        }
+
     }
 }

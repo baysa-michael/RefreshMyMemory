@@ -108,7 +108,7 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
                 ServletConnection newConnection = new ServletConnection(requestData,
                         this);
 
-                newConnection.execute(getString(R.string.servlet_url));
+                newConnection.execute(getString(R.string.emulator_servlet_url));
             } catch (Exception e) {
                 // Stop Indeterminate Progress Bar
                 indeterminateProgressBar.setVisibility(View.GONE);
@@ -118,18 +118,6 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
                 e.printStackTrace();
                 return;
             }
-
-            // Stop Indeterminate Progress Bar
-            indeterminateProgressBar.setVisibility(View.GONE);
-
-            // Clear User Input
-            usernameEdit.getText().clear();
-            passwordEdit.getText().clear();
-            displayNameEdit.getText().clear();
-            emailEdit.getText().clear();
-
-            // Finish the activity if successful
-            finish();
         } else {
             // Stop Indeterminate Progress Bar
             indeterminateProgressBar.setVisibility(View.GONE);
@@ -152,6 +140,9 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         indeterminateProgressBar.setVisibility(View.GONE);
 
         informUser(message);
+
+        // Finish the activity if successful
+        finish();
     }
 
     @Override

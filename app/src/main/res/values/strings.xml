@@ -7,7 +7,9 @@
 
 
     <!-- URL STRINGS -->
-    <string name="servlet_url">localhost:8080/javaservlets/RefreshMyMemoryServlet</string>
+    <string name="servlet_url">http://localhost:8080/RefreshMyMemoryServlet/RefreshMyMemoryServlet</string>
+    <string name="emulator_servlet_url">http://10.0.2.2:8080/RefreshMyMemoryServlet/RefreshMyMemoryServlet</string>
+
 
     <!-- TITLE SCREEN STRINGS -->
     <string name="welcome_title">WELCOME TO \n&appname;</string>

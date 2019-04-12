@@ -3,6 +3,9 @@ package com.refreshmymemory.control;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
@@ -18,9 +21,10 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
     private static final String TAG = "ServletConnection";
     private String urlString;
     private String requestParameters;
-    // ******************************* NEED TO IMPLEMENT A LISTENER CONNECTED TO THE UI ***********
+    private ServletConnectionListener listener;
 
-    public ServletConnection (Map<String, String> requestData) throws Exception {
+    public ServletConnection (Map<String, String> requestData,
+                              ServletConnectionListener newListener) throws Exception {
         StringBuilder parameterBuilder = new StringBuilder();
         boolean notFirstItem = false;
 
@@ -44,6 +48,9 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
 
         // Attach the requestParameters to the object
         requestParameters = parameterBuilder.toString();
+
+        // Attach the listener
+        this.listener = newListener;
     }
 
     @Override
@@ -97,11 +104,21 @@ public class ServletConnection extends AsyncTask<String, Integer, Void> {
             while ((returnJSON = reader.readLine()) != null) {
                 result.append(returnJSON);
             }
-
-            // **************** ADD ACTIONS FOR RETURN DOCUMENT ***********************
             Log.i(TAG, returnJSON);
 
+
+            // Retrieve Status from JSON Result
+            JsonObject json = new Gson().fromJson(returnJSON, JsonObject.class);
+            String status = json.get("status").toString();
+
+            if (status.equalsIgnoreCase("SUCCESS")) {
+                listener.onServerResponse(true, "Successfully Added New User");
+            } else {
+                listener.onServerResponse(false, "ERROR:  Unable to Add New User");
+            }
+
         } catch (Exception e) {
+            listener.onServerResponse(false, "ERROR:  Unable to Add New User");
             e.printStackTrace();
         } finally {
             if (urlConnection != null) {

@@ -11,13 +11,19 @@ import android.widget.Toast;
 
 import com.refreshmymemory.R;
 import com.refreshmymemory.control.ServletConnection;
+import com.refreshmymemory.control.ServletConnectionListener;
 
 import java.util.Map;
 
-public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View {
+public class CreateAccount extends AppCompatActivity implements CreateAccountContract.View,
+        ServletConnectionListener {
     private final static String TAG = "CreateAccount";
     private CreateAccountPresenter presenter;
     private ProgressBar indeterminateProgressBar;
+    EditText usernameEdit;
+    EditText passwordEdit;
+    EditText displayNameEdit;
+    EditText emailEdit;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +49,12 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
 
         // Initialize Presenter
         presenter = new CreateAccountPresenter();
+
+        // Initialize Views
+        usernameEdit = findViewById(R.id.createaccountUsernameEdit);
+        passwordEdit = findViewById(R.id.createaccountPasswordEdit);
+        displayNameEdit = findViewById(R.id.createaccountDisplayNameEdit);
+        emailEdit = findViewById(R.id.createaccountEmailEdit);
 
         // Set Indeterminate Progress Bar to Gone
         indeterminateProgressBar = findViewById(R.id.createaccountIndeterminateProgress);
@@ -93,7 +105,8 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
         if (requestData != null) {
             // Launch Connection
             try {
-                ServletConnection newConnection = new ServletConnection(requestData);
+                ServletConnection newConnection = new ServletConnection(requestData,
+                        this);
 
                 newConnection.execute(getString(R.string.servlet_url));
             } catch (Exception e) {
@@ -109,8 +122,6 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
             // Stop Indeterminate Progress Bar
             indeterminateProgressBar.setVisibility(View.GONE);
 
-            informUser("Successfully Added User Account");
-
             // Clear User Input
             usernameEdit.getText().clear();
             passwordEdit.getText().clear();
@@ -125,6 +136,22 @@ public class CreateAccount extends AppCompatActivity implements CreateAccountCon
 
             informUser("ERROR:  Unable to create new account");
         }
+    }
+
+    @Override
+    public void onServerResponse(boolean isSuccess, String message) {
+        if (isSuccess) {
+            // Clear User Input
+            usernameEdit.getText().clear();
+            passwordEdit.getText().clear();
+            displayNameEdit.getText().clear();
+            emailEdit.getText().clear();
+        }
+
+        // Stop Indeterminate Progress Bar
+        indeterminateProgressBar.setVisibility(View.GONE);
+
+        informUser(message);
     }
 
     @Override
